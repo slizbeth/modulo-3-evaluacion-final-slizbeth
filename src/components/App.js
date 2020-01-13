@@ -2,6 +2,7 @@ import React from 'react';
 import '../stylesheets/App.css';
 import {fetchCharacters} from '../services/api.js';
 import CharacterList from './CharacterList'
+import Filters from './Filters';
 
 class App extends React.Component {
   constructor(props) {
@@ -14,9 +15,9 @@ class App extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(evt){
+  handleChange(value){
     this.setState({
-      value: evt.target.value
+      value: value
     })
   }
   
@@ -30,15 +31,16 @@ class App extends React.Component {
   }
 
   render() {
-    const {value} = this.state;
+    const {value, allCharacteres} = this.state;
     return (
       <div className="App">
-        <form>
-            <label>
-                <input type="text" onChange={this.handleChange} name="character" value={value}/>
-            </label>
-        </form>
-        <CharacterList allCharacteres = {this.state.allCharacteres}/>
+        <Filters
+          handleChange = {this.handleChange}
+        />
+        <CharacterList 
+          allCharacteres = {allCharacteres}
+          value = {value}
+        />
       </div>
     );
   }
