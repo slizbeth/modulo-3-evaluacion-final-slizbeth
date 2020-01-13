@@ -1,6 +1,7 @@
 import React from 'react';
 import '../stylesheets/App.css';
-import {fetchCharacters} from '../services/api.js'
+import {fetchCharacters} from '../services/api.js';
+import CharacterList from './CharacterList'
 
 class App extends React.Component {
   constructor(props) {
@@ -29,23 +30,15 @@ class App extends React.Component {
   }
 
   render() {
+    const {value} = this.state;
     return (
       <div className="App">
         <form>
             <label>
-                <input type="text" onChange={this.handleChange} name="character" value={this.state.value}/>
+                <input type="text" onChange={this.handleChange} name="character" value={value}/>
             </label>
         </form>
-        <ul>
-          {this.state.allCharacteres
-          .filter(character => this.state.value === '' || character.name.toLowerCase()
-          .includes(this.state.value.toLowerCase()))
-          .map((character) => <li key={character.id}>
-            <img src={character.image} alt={character.name}/>
-            <h4>{character.name}</h4>
-            <p>{character.species}</p>
-          </li>)}
-        </ul>
+        <CharacterList allCharacteres = {this.state.allCharacteres}/>
       </div>
     );
   }
