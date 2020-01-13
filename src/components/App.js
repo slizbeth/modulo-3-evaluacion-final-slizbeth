@@ -23,6 +23,13 @@ class App extends React.Component {
     return (
       <div className="App">
         Rick & Morty Search
+        <ul>
+          {this.state.allCharacteres.map((character) => <li>
+            <img src={character.image} alt={character.name}/>
+            <h4>{character.name}</h4>
+            <p>{character.species}</p>
+          </li>)}
+        </ul>
       </div>
     );
   }
