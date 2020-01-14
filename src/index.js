@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 
 ReactDOM.render(
-    <BrowserRouter> 
+    <BrowserRouter basename="/modulo-3-evaluacion-final-slizbeth"> 
         <App />
     </BrowserRouter>, 
 document.getElementById('root'));
