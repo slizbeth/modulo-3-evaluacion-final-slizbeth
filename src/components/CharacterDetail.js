@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const CharacterDetail = props => {
     if(props.character !== undefined){
         const { image, name, status, species, origin, episode } = props.character;
-        return <>
+        return <section>
             <Link className="character__link" to='/'>
                 <span className="detail_back"><i className="fas fa-hand-point-left"></i></span>
             </Link>
@@ -14,12 +14,12 @@ const CharacterDetail = props => {
                 <div className="detail__info">
                     <h1>{name}</h1>
                     <p>Status: {status === 'Alive' ? <i className="fas fa-heartbeat icon_alive"></i> : <i className="fas fa-skull-crossbones icon_dead"></i>}</p>
-                    <p>Species: {species === 'Human' ? <i className="fas fa-baby"></i> : <i className="fab fa-reddit-alien icon_alien"></i>}</p>
+                    <p>Species: {species === 'Human' ? <i className="fas fa-baby icon_human"></i> : <i className="fab fa-reddit-alien icon_alien"></i>}</p>
                     <p>Origin: {origin.name}</p>
                     <p>Episodes: {episode.length}</p>
                 </div>
             </div>  
-            </>  
+            </section>  
     } else {
         return(
             <p>Ups...problemas técnicos, lo siento...</p>

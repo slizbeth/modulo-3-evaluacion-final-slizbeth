@@ -12,8 +12,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       allCharacteres: [],
-      value: '',
-      
+      value: ''
     };
     
     this.renderCharacterDetail = this.renderCharacterDetail.bind(this);

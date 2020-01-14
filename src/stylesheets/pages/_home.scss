@@ -2,11 +2,12 @@
     text-align: center;
     background-color: #000;
     color:#ffffff;
-    padding: 0 30px;
+    padding: 20px 30px;
     font-family: 'Cedarville Cursive', cursive;
+    min-height: 100vh;
 }
+
 .header__img{
-    margin:5px;
     width: 300px;
     @media all and (min-width:768px) {
         width: 500px;
@@ -48,6 +49,7 @@
     color:#ffffff;
     &:hover{
         background-color:#8DBF5B;
+        color: #000;
     }
 }
 
@@ -81,7 +83,6 @@
    
 }
 
-
 .icon_alive{
     color:#ff0000;
     animation: alive .2s infinite;
@@ -93,11 +94,15 @@
 }
 
 .icon_alien{
-    color:rgb(119, 255, 29);
+    color:#77ff1d;
+}
+
+.icon_human{
+    color:#f7c4a6;
 }
 
 .detail_back{
-    margin: 15px;
+    margin: 10px;
     padding: 5px;
     display: inline-block;
 }
