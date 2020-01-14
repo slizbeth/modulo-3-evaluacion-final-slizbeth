@@ -1,16 +1,39 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 const CharacterDetail = props => {
-    console.log(props)
-    // const {name, image, status, species} = props;
-    return <div>
-        <img src={props.character.image} alt={props.character.name}/>
-        <h1>{props.character.name}</h1>
-        <p>Status: {props.character.status}</p>
-        <p>Species: {props.character.species}</p>
-        <p>Originsss: {props.character.gender}</p>
-        <p>Episodes: {props.character.url}</p>
-    </div>
+    if(props.character !== undefined){
+        const { image, name, status, species, origin, episode } = props.character;
+        return <>
+            <Link className="character__link" to='/'>
+                <span className="detail_back"><i className="fas fa-hand-point-left"></i></span>
+            </Link>
+            <div className="character__detail">
+                <img className="detail__img" src={image} alt={name}/>
+                <div className="detail__info">
+                    <h1>{name}</h1>
+                    <p>Status: {status === 'Alive' ? <i className="fas fa-heartbeat icon_alive"></i> : <i className="fas fa-skull-crossbones icon_dead"></i>}</p>
+                    <p>Species: {species === 'Human' ? <i className="fas fa-baby"></i> : <i className="fab fa-reddit-alien icon_alien"></i>}</p>
+                    <p>Origin: {origin.name}</p>
+                    <p>Episodes: {episode.length}</p>
+                </div>
+            </div>  
+            </>  
+    } else {
+        return(
+            <p>Ups...problemas técnicos, lo siento...</p>
+        )
+    }
 }
+
+CharacterDetail.propTypes = {
+    image: PropTypes.string,
+    name: PropTypes.string,
+    status: PropTypes.string,
+    species: PropTypes.string,
+    origin: PropTypes.number,
+    episode: PropTypes.string,
+};
 
 export default CharacterDetail;

@@ -1,7 +1,5 @@
-// @import '_varibles.scss';
+//Vendors
+@import 'vendors/normalize.scss';
 
-.App {
-  text-align: center;
-  background-color: #000;
-  color:white
-}
+//Pages
+@import 'pages/home';

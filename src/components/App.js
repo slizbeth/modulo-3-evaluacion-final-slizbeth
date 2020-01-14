@@ -1,11 +1,11 @@
 import React from 'react';
 import '../stylesheets/App.scss';
-import {fetchCharacters, fetchIdCharacter} from '../services/api.js';
+import {fetchCharacters} from '../services/api.js';
 import CharacterList from './CharacterList'
 import CharacterDetail from './CharacterDetail'
-import Filters from './Filters';
+import Search from './Search';
 import {Route, Switch } from 'react-router-dom';
-import logo from '../images/logo.png'
+import Header from './Header'
  
 class App extends React.Component {
   constructor(props) {
@@ -13,33 +13,23 @@ class App extends React.Component {
     this.state = {
       allCharacteres: [],
       value: '',
-      character: []
+      
     };
     
-    this.renderIdCharacter = this.renderIdCharacter.bind(this);
-    this.fetchIdCharacter = this.fetchIdCharacter.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.renderCharacterDetail = this.renderCharacterDetail.bind(this);
+    this.getInputValue = this.getInputValue.bind(this);
   }
 
-  handleChange(value){
+  getInputValue(value){
     this.setState({
       value: value
     })
   }
 
-  fetchIdCharacter(id){
-    //if(id !== this.state.character.id){
-      fetchIdCharacter(id).then(data => {
-        this.setState({
-          character: data
-        })
-      })
-    //}
-  }
-
-  renderIdCharacter (props) {
-    this.fetchIdCharacter(props.match.params.id)
-    return <CharacterDetail character={this.state.character}/>
+  renderCharacterDetail (props) {
+    const id = props.match.params.id;
+    const character = this.state.allCharacteres.find(character => character.id === parseInt(id));
+    return <CharacterDetail character={character}/>
   }
   
   componentDidMount() {
@@ -55,19 +45,19 @@ class App extends React.Component {
     const {value, allCharacteres} = this.state;
     return (
       <div className="App">
-        <img src={logo} alt="logo"/> 
+        <Header/>
         <Switch>       
           <Route path="/" exact>
-           
-            <Filters
-              handleChange= {this.handleChange}
+            <Search
+              getInputValue= {this.getInputValue}
+              value= {value}
             />
             <CharacterList 
               allCharacteres= {allCharacteres}
               value= {value}
             />
           </Route>
-          <Route path="/character/:id" render={this.renderIdCharacter}></Route>
+          <Route path="/character/:id" render={this.renderCharacterDetail}></Route>
         </Switch>
       </div>
 
