@@ -9,7 +9,7 @@ const CharacterCard = props => {
         <p>{characterSpecies}</p>
     </>
 }
-// Así definimos las propTypes
+
 CharacterCard.propTypes = {
     characterImage: PropTypes.string,
     characterName: PropTypes.string,

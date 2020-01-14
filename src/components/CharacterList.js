@@ -21,7 +21,6 @@ const CharacterList = props => {
     </ul>
 }
 
-// Así definimos las propTypes
 CharacterList.propTypes = {
     allCharacteres: PropTypes.array.isRequired,
     value: PropTypes.string.isRequired

@@ -20,7 +20,6 @@ const Search = props => {
     </div>
 }
 
-// Así definimos las propTypes
 Search.propTypes = {
     value: PropTypes.string.isRequired
 };
